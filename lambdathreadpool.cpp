@@ -48,7 +48,7 @@ namespace bryanser {
         pthread_cond_signal(&(this->ready));
     }
 
-    void ThreadPool::stop() {
+    void ThreadPool::shutdownPool() {
         if (this->shutdown) {
             return;
         }

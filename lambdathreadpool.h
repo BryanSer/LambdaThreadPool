@@ -31,7 +31,7 @@ namespace bryanser {
         bool isEmpty();
 
         Thread * waitingNext();
-        void stop();
+        void shutdownPool();
         void addThread(function<void(void)> &func);
     };
 

@@ -6,9 +6,31 @@
 
 #IncludeRegexTransform: 
 
+/root/CLionProjects/LambdaThreadPool/lambdathreadpool.cpp
+lambdathreadpool.h
+/root/CLionProjects/LambdaThreadPool/lambdathreadpool.h
+utility
+-
+
+/root/CLionProjects/LambdaThreadPool/lambdathreadpool.h
+unistd.h
+-
+pthread.h
+-
+cassert
+-
+functional
+-
+queue
+-
+
 /root/CLionProjects/LambdaThreadPool/main.cpp
 iostream
 -
 string
+-
+lambdathreadpool.cpp
+/root/CLionProjects/LambdaThreadPool/lambdathreadpool.cpp
+functional
 -
 
