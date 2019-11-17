@@ -40,7 +40,7 @@ namespace bryanser {
         return t;
     }
 
-    void ThreadPool::addThread(function<void(void)> &func) {
+    void ThreadPool::addTask(function<void(void)> &func) {
         pthread_mutex_lock(&(this->lock));// 获得线程锁
         Task *t = new Task(func);
         this->threads->push(t);

@@ -11,7 +11,7 @@ int main() {
         function<void()> f = [=]() {
             cout << "test"  << i << endl;
         };
-        tp->addThread(f);
+        tp->addTask(f);
     }
     sleep(1);
     tp->shutdownPool();

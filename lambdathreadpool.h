@@ -32,7 +32,7 @@ namespace bryanser {
 
         Task * waitingNext();
         void shutdownPool();
-        void addThread(function<void(void)> &func);
+        void addTask(function<void(void)> &func);
     };
 
 
