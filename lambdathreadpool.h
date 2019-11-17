@@ -12,11 +12,11 @@
 #define LAMBDATHREADPOOL_LAMBDATHREADPOOL_H
 using namespace std;
 namespace bryanser {
-    class Thread {
+    class Task {
     public:
         function<void(void)> func;
 
-        explicit Thread(function<void(void)> func);
+        explicit Task(function<void(void)> func);
     };
 
     class ThreadPool {
@@ -25,12 +25,12 @@ namespace bryanser {
         pthread_cond_t ready;
         int maxThread;
         bool shutdown = false;
-        queue<Thread *> *threads = new queue<Thread *>();
+        queue<Task *> *threads = new queue<Task *>();
         pthread_t * id;
         explicit ThreadPool(int max);
         bool isEmpty();
 
-        Thread * waitingNext();
+        Task * waitingNext();
         void shutdownPool();
         void addThread(function<void(void)> &func);
     };
