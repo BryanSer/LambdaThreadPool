@@ -1,0 +1,3 @@
+/root/CLionProjects/LambdaThreadPool/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/root/CLionProjects/LambdaThreadPool/cmake-build-debug/CMakeFiles/LambdaThreadPool.dir
+/root/CLionProjects/LambdaThreadPool/cmake-build-debug/CMakeFiles/edit_cache.dir
