@@ -48,10 +48,10 @@ RM = /opt/clion-2019.2.5/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/CLionProjects/LambdaThreadPool
+CMAKE_SOURCE_DIR = /home/bryan33/CLionProjects/LambdaThreadPool
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/CLionProjects/LambdaThreadPool/cmake-build-debug
+CMAKE_BINARY_DIR = /home/bryan33/CLionProjects/LambdaThreadPool/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/CLionProjects/LambdaThreadPool/cmake-build-debug/CMakeFiles /root/CLionProjects/LambdaThreadPool/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bryan33/CLionProjects/LambdaThreadPool/cmake-build-debug/CMakeFiles /home/bryan33/CLionProjects/LambdaThreadPool/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/CLionProjects/LambdaThreadPool/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bryan33/CLionProjects/LambdaThreadPool/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

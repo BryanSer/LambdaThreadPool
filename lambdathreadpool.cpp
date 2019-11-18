@@ -57,20 +57,72 @@ namespace bryanser {
         for (int i = 0; i < this->maxThread; i++) {
             pthread_join(this->id[i], null);// 等待未完成的线程完成
         }
-        delete [] this->id;
-        while(!this->isEmpty()){// 清理队列
-            Task * t = this->threads->front();
+        delete[] this->id;
+        while (!this->isEmpty()) {// 清理队列
+            Task *t = this->threads->front();
             this->threads->pop();
             delete t;
         }
         delete this->threads;
+        pthread_mutex_destroy(&(this->lock));
+        pthread_cond_destroy(&(this->ready));
     }
 
 
+    template<class T>
+    Channel<T>::Channel() {
+        sem_init(&(this->sem), 0, 0);
+        pthread_mutex_init(&(this->data_lock), null);
+    }
+
+    template<class T>
+    void Channel<T>::send(T &t) {
+        if(isClose){
+            return;
+        }
+        pthread_mutex_lock(&(this->data_lock));
+        this->data->push(t);
+        pthread_mutex_unlock(&(this->data_lock));
+        sem_post(&(this->sem));
+    }
+
+    template<class T>
+    T *Channel<T>::receive() {
+        if(isClose){
+            return null;
+        }
+        sem_wait(&(this->sem));
+        if(isClose){
+            return null;
+        }
+        pthread_mutex_lock(&(this->data_lock));
+        T &t = this->data->front();
+        this->data->pop();
+        pthread_mutex_unlock(&(this->data_lock));
+        return &t;
+    }
+
+    template<class T>
+    Channel<T>::~Channel() {
+        delete data;
+        sem_destroy(&(sem));
+        pthread_mutex_destroy(&(this->data_lock));
+    }
+
+    template<class T>
+    void Channel<T>::close() {
+        if(isClose){
+            return;
+        }
+        isClose = true;
+        sem_post(&(this->sem));
+    }
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
+
     // 负责线程池的线程运行
-	// 参数为这个线程所属的线程池指针
+    // 参数为这个线程所属的线程池指针
     void *threadRun(void *args) {
         ThreadPool *pool = (ThreadPool *) args;
         while (true) {
